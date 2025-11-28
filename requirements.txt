@@ -3,3 +3,6 @@ uvicorn
 mysql-connector-python
 python-dotenv
 requests
+unidecode
+lxml
+pandas
