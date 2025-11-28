@@ -5,23 +5,26 @@ import mysqlPromise from 'mysql2/promise';
 import cors from 'cors';
 import { RowDataPacket, ResultSetHeader } from 'mysql2';
 
+import dotenv from "dotenv";
+dotenv.config();
+
 const app = express();
-const port = 5001;
+const port = process.env.PORT || 5001;  // Render sets PORT automatically
 
 // Create a MySQL connection pool
 const pool = mysql.createPool({
-    host: 'localhost',
-    user: 'root',
-    password: 'yourpassword',
-    database: 'fyp_pc'
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME
 });
 
-// Create a promise-based connection pool (mysql2/promise) for async routes
+// Promise-based pool
 const poolPromise = mysqlPromise.createPool({
-    host: 'localhost',
-    user: 'root',
-    password: 'yourpassword',
-    database: 'fyp_pc'
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME
 });
 
 // Middleware to handle JSON requests
