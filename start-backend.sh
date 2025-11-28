@@ -1,5 +1,5 @@
 #!/bin/bash
-# Run npm start for backend React frontend
+# Run npm start for backend Node.js
 npm start &
 
 # Start the FastAPI server
